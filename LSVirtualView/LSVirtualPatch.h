@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class LSVirtualNode;
+
 typedef enum : NSUInteger {
     LSVirtualPatchTypeNone,
     LSVirtualPatchTypeNode,
@@ -20,5 +22,9 @@ typedef enum : NSUInteger {
 @interface LSVirtualPatch : NSObject
 
 @property (nonatomic, assign) LSVirtualPatchType type;
+
+@property (nonatomic, strong) LSVirtualNode *node;
+
+@property (nonatomic, strong) id patch;
 
 @end
