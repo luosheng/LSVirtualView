@@ -25,7 +25,7 @@
     [super tearDown];
 }
 
-- (void)testExample {
+- (void)testCreation {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
     LSVirtualNode *node = [[LSVirtualNode alloc] initWithClass:UIButton.class configuration:^(UIButton * object) {
@@ -36,6 +36,18 @@
     UIButton *button = [node create];
     NSString *title = [button titleForState:UIControlStateNormal];
     XCTAssertEqual(title, @"123");
+}
+
+- (void)testDiff {
+    LSVirtualNode *nodeA = [[LSVirtualNode alloc] initWithClass:UIButton.class configuration:^(__weak UIButton * object) {
+        [object setTitle:@"123" forState:UIControlStateNormal];
+    }];
+    LSVirtualNode *nodeB = [[LSVirtualNode alloc] initWithClass:UIButton.class configuration:^(__weak UIButton * object) {
+        [object setTitle:@"123" forState:UIControlStateNormal];
+    }];
+    
+    NSArray *diffs = [nodeA diff:nodeB];
+    XCTAssertEqual(diffs.count, 0);
 }
 
 - (void)testPerformanceExample {
