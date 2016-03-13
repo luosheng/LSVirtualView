@@ -18,22 +18,22 @@
 
 @implementation LSVirtualNode
 
-+ (NSMutableDictionary *)_mapping {
-    static NSMutableDictionary *mapping = nil;
++ (NSMutableDictionary *)_objectPool {
+    static NSMutableDictionary *pool = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        mapping = [NSMutableDictionary dictionary];
+        pool = [NSMutableDictionary dictionary];
     });
-    return mapping;
+    return pool;
 }
 
 - (instancetype)initWithClass:(Class)class configuration:(LSVirtualNodeConfiguration)configuration {
     NSString *className = NSStringFromClass(class);
-    if (self.class._mapping[className] == nil) {
-        self.class._mapping[className] = [[class alloc] init];
+    if (self.class._objectPool[className] == nil) {
+        self.class._objectPool[className] = [[class alloc] init];
     }
     
-    _underlyingObject = self.class._mapping[className];
+    _underlyingObject = self.class._objectPool[className];
     _underlyingClass = class;
     _invocations = [NSMutableArray array];
     
