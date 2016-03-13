@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "LSVirtualNode.h"
+#import "LSVirtualPatch.h"
 
 @interface LSVirtualViewTests : XCTestCase
 
@@ -48,6 +49,23 @@
     
     NSArray *diffs = [nodeA diff:nodeB];
     XCTAssertEqual(diffs.count, 0);
+}
+
+- (void)testTwoDifferentNodes {
+    LSVirtualNode *nodeA = [[LSVirtualNode alloc] initWithClass:UIButton.class configuration:^(__weak UIButton * object) {
+        [object setTitle:@"123" forState:UIControlStateNormal];
+    }];
+    LSVirtualNode *nodeB = [[LSVirtualNode alloc] initWithClass:UIView.class configuration:^(__weak UIView * object) {
+        object.backgroundColor = [UIColor redColor];
+    }];
+    
+    NSArray *diffs = [nodeA diff:nodeB];
+    XCTAssertEqual(diffs.count, 1);
+    
+    LSVirtualPatch *patch = diffs.firstObject;
+    XCTAssertEqual(patch.type, LSVirtualPatchTypeNode);
+    XCTAssertEqual(patch.node, nodeA);
+    XCTAssertEqual(patch.patch, nodeB);
 }
 
 - (void)testPerformanceExample {
