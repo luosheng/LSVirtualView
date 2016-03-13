@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		B306C3E51C959ED800C6A9E9 /* LSVirtualView.h in Headers */ = {isa = PBXBuildFile; fileRef = B306C3E41C959ED800C6A9E9 /* LSVirtualView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B306C3EE1C959EEC00C6A9E9 /* LSVirtualNode.h in Headers */ = {isa = PBXBuildFile; fileRef = B306C3EC1C959EEC00C6A9E9 /* LSVirtualNode.h */; };
+		B306C3EE1C959EEC00C6A9E9 /* LSVirtualNode.h in Headers */ = {isa = PBXBuildFile; fileRef = B306C3EC1C959EEC00C6A9E9 /* LSVirtualNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B306C3EF1C959EEC00C6A9E9 /* LSVirtualNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B306C3ED1C959EEC00C6A9E9 /* LSVirtualNode.m */; };
 		B306C3F71C959F1700C6A9E9 /* LSVirtualViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B306C3F61C959F1700C6A9E9 /* LSVirtualViewTests.m */; };
 		B306C3F91C959F1700C6A9E9 /* LSVirtualView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B306C3E11C959ED800C6A9E9 /* LSVirtualView.framework */; };
-		B306C4011C95CE6400C6A9E9 /* LSVirtualPatch.h in Headers */ = {isa = PBXBuildFile; fileRef = B306C3FF1C95CE6400C6A9E9 /* LSVirtualPatch.h */; };
+		B306C4011C95CE6400C6A9E9 /* LSVirtualPatch.h in Headers */ = {isa = PBXBuildFile; fileRef = B306C3FF1C95CE6400C6A9E9 /* LSVirtualPatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B306C4021C95CE6400C6A9E9 /* LSVirtualPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B306C4001C95CE6400C6A9E9 /* LSVirtualPatch.m */; };
 /* End PBXBuildFile section */
 
