@@ -10,9 +10,11 @@
 
 @interface LSVirtualNode ()
 
-@property (nonatomic, unsafe_unretained) Class underlyingClass;
+@property (nonatomic, unsafe_unretained, readwrite) Class underlyingClass;
+
 @property (nonatomic, weak) id underlyingObject;
-@property (nonatomic, strong) NSMutableArray *invocations;
+
+@property (nonatomic, strong, readwrite) NSMutableArray *invocations;
 
 @end
 
@@ -57,7 +59,7 @@
 }
 
 - (void)forwardInvocation:(NSInvocation *)invocation {
-    [self.invocations addObject:invocation];
+    [(NSMutableArray *)self.invocations addObject:invocation];
 }
 
 @end
