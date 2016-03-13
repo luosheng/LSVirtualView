@@ -52,6 +52,16 @@
     return object;
 }
 
+- (NSArray *)diff:(LSVirtualNode *)node {
+    NSMutableArray *array = [NSMutableArray array];
+    
+    if (self.underlyingClass == node.underlyingClass) {
+        
+    }
+    
+    return [array copy];
+}
+
 #pragma mark - Method forwarding
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)sel {

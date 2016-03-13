@@ -16,6 +16,8 @@ typedef void (^LSVirtualNodeConfiguration)(__weak id object);
 
 - (id)create;
 
+- (NSArray *)diff:(LSVirtualNode *)node;
+
 @property (nonatomic, unsafe_unretained, readonly) Class underlyingClass;
 
 @property (nonatomic, strong, readonly) NSArray *invocations;
