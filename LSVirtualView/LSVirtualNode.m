@@ -11,6 +11,7 @@
 @interface LSVirtualNode ()
 
 @property (nonatomic, unsafe_unretained) Class underlyingClass;
+@property (nonatomic, weak) id underlyingObject;
 @property (nonatomic, strong) NSMutableArray *invocations;
 
 @end
@@ -32,8 +33,10 @@
         self.class._mapping[className] = [[class alloc] init];
     }
     
+    _underlyingObject = self.class._mapping[className];
     _underlyingClass = class;
     _invocations = [NSMutableArray array];
+    
     configuration(self);
     
     return self;
@@ -50,12 +53,7 @@
 #pragma mark - Method forwarding
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)sel {
-    for (id object in self.class._mapping.allValues) {
-        if ([object respondsToSelector:sel]) {
-            return [object methodSignatureForSelector:sel];
-        }
-    }
-    return nil;
+    return [self.underlyingObject methodSignatureForSelector:sel];
 }
 
 - (void)forwardInvocation:(NSInvocation *)invocation {
