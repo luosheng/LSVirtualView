@@ -21,6 +21,8 @@ typedef enum : NSUInteger {
 
 @interface LSVirtualPatch : NSObject
 
+- (instancetype)initWithType:(LSVirtualPatchType)type node:(LSVirtualNode *)node patch:(id)patch;
+
 @property (nonatomic, assign) LSVirtualPatchType type;
 
 @property (nonatomic, strong) LSVirtualNode *node;

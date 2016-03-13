@@ -10,4 +10,17 @@
 
 @implementation LSVirtualPatch
 
+- (instancetype)initWithType:(LSVirtualPatchType)type node:(LSVirtualNode *)node patch:(id)patch {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    _type = type;
+    _node = node;
+    _patch = patch;
+    
+    return self;
+}
+
 @end
