@@ -7,6 +7,7 @@
 //
 
 #import "LSVirtualNode.h"
+#import "LSVirtualPatch.h"
 
 @interface LSVirtualNode ()
 
@@ -55,8 +56,9 @@
 - (NSArray *)diff:(LSVirtualNode *)node {
     NSMutableArray *array = [NSMutableArray array];
     
-    if (self.underlyingClass == node.underlyingClass) {
-        
+    if (self.underlyingClass != node.underlyingClass) {
+        LSVirtualPatch *patch = [[LSVirtualPatch alloc] initWithType:LSVirtualPatchTypeNode node:self patch:node];
+        [array addObject:patch];
     }
     
     return [array copy];
