@@ -12,6 +12,8 @@
 		B306C3EF1C959EEC00C6A9E9 /* LSVirtualNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B306C3ED1C959EEC00C6A9E9 /* LSVirtualNode.m */; };
 		B306C3F71C959F1700C6A9E9 /* LSVirtualViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B306C3F61C959F1700C6A9E9 /* LSVirtualViewTests.m */; };
 		B306C3F91C959F1700C6A9E9 /* LSVirtualView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B306C3E11C959ED800C6A9E9 /* LSVirtualView.framework */; };
+		B306C4011C95CE6400C6A9E9 /* LSVirtualPatch.h in Headers */ = {isa = PBXBuildFile; fileRef = B306C3FF1C95CE6400C6A9E9 /* LSVirtualPatch.h */; };
+		B306C4021C95CE6400C6A9E9 /* LSVirtualPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B306C4001C95CE6400C6A9E9 /* LSVirtualPatch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +35,8 @@
 		B306C3F41C959F1700C6A9E9 /* LSVirtualViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LSVirtualViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B306C3F61C959F1700C6A9E9 /* LSVirtualViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSVirtualViewTests.m; sourceTree = "<group>"; };
 		B306C3F81C959F1700C6A9E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B306C3FF1C95CE6400C6A9E9 /* LSVirtualPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSVirtualPatch.h; sourceTree = "<group>"; };
+		B306C4001C95CE6400C6A9E9 /* LSVirtualPatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSVirtualPatch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 				B306C3E61C959ED800C6A9E9 /* Info.plist */,
 				B306C3EC1C959EEC00C6A9E9 /* LSVirtualNode.h */,
 				B306C3ED1C959EEC00C6A9E9 /* LSVirtualNode.m */,
+				B306C3FF1C95CE6400C6A9E9 /* LSVirtualPatch.h */,
+				B306C4001C95CE6400C6A9E9 /* LSVirtualPatch.m */,
 			);
 			path = LSVirtualView;
 			sourceTree = "<group>";
@@ -99,6 +105,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B306C4011C95CE6400C6A9E9 /* LSVirtualPatch.h in Headers */,
 				B306C3E51C959ED800C6A9E9 /* LSVirtualView.h in Headers */,
 				B306C3EE1C959EEC00C6A9E9 /* LSVirtualNode.h in Headers */,
 			);
@@ -201,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B306C3EF1C959EEC00C6A9E9 /* LSVirtualNode.m in Sources */,
+				B306C4021C95CE6400C6A9E9 /* LSVirtualPatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
