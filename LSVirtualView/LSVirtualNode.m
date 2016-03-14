@@ -57,11 +57,16 @@
 }
 
 - (id)create {
-    id object = [[self.underlyingClass alloc] init];
+    UIView *view = [[self.underlyingClass alloc] init];
     for (NSInvocation *invocation in self.invocations) {
-        [invocation invokeWithTarget:object];
+        [invocation invokeWithTarget:view];
     }
-    return object;
+    
+    for (LSVirtualNode *node in self.children) {
+        [view addSubview:node.create];
+    }
+    
+    return view;
 }
 
 - (NSArray *)diff:(LSVirtualNode *)node {
