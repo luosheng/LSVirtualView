@@ -12,7 +12,9 @@ typedef void (^LSVirtualNodeConfiguration)(__weak id object);
 
 @interface LSVirtualNode : NSProxy
 
-- (instancetype)initWithClass:(Class)class configuration:(LSVirtualNodeConfiguration)configuration;
+- (instancetype)initWithClass:(Class)class
+                     children:(NSArray<LSVirtualNode *> *)children
+                configuration:(LSVirtualNodeConfiguration)configuration;
 
 - (id)create;
 

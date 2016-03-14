@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong, readwrite) NSMutableArray *invocations;
 
+@property (nonatomic, strong) NSArray<LSVirtualNode *> *children;
+
 @end
 
 @implementation LSVirtualNode
@@ -30,7 +32,9 @@
     return pool;
 }
 
-- (instancetype)initWithClass:(Class)class configuration:(LSVirtualNodeConfiguration)configuration {
+- (instancetype)initWithClass:(Class)class
+                     children:(NSArray<LSVirtualNode *> *)children
+                configuration:(LSVirtualNodeConfiguration)configuration {
     NSString *className = NSStringFromClass(class);
     if (self.class._objectPool[className] == nil) {
         self.class._objectPool[className] = [[class alloc] init];
@@ -39,6 +43,7 @@
     _underlyingObject = self.class._objectPool[className];
     _underlyingClass = class;
     _invocations = [NSMutableArray array];
+    _children = children;
     
     configuration(self);
     

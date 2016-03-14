@@ -29,7 +29,7 @@
 - (void)testCreation {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
-    LSVirtualNode *node = [[LSVirtualNode alloc] initWithClass:UIButton.class configuration:^(UIButton * object) {
+    LSVirtualNode *node = [[LSVirtualNode alloc] initWithClass:UIButton.class children:@[] configuration:^(UIButton * object) {
         [object setTitle:@"123" forState:UIControlStateNormal];
         object.tintColor = [UIColor redColor];
     }];
@@ -40,10 +40,10 @@
 }
 
 - (void)testDiff {
-    LSVirtualNode *nodeA = [[LSVirtualNode alloc] initWithClass:UIButton.class configuration:^(__weak UIButton * object) {
+    LSVirtualNode *nodeA = [[LSVirtualNode alloc] initWithClass:UIButton.class children:@[] configuration:^(__weak UIButton * object) {
         [object setTitle:@"123" forState:UIControlStateNormal];
     }];
-    LSVirtualNode *nodeB = [[LSVirtualNode alloc] initWithClass:UIButton.class configuration:^(__weak UIButton * object) {
+    LSVirtualNode *nodeB = [[LSVirtualNode alloc] initWithClass:UIButton.class children:@[] configuration:^(__weak UIButton * object) {
         [object setTitle:@"123" forState:UIControlStateNormal];
     }];
     
@@ -52,10 +52,10 @@
 }
 
 - (void)testTwoDifferentNodes {
-    LSVirtualNode *nodeA = [[LSVirtualNode alloc] initWithClass:UIButton.class configuration:^(__weak UIButton * object) {
+    LSVirtualNode *nodeA = [[LSVirtualNode alloc] initWithClass:UIButton.class children:@[] configuration:^(__weak UIButton * object) {
         [object setTitle:@"123" forState:UIControlStateNormal];
     }];
-    LSVirtualNode *nodeB = [[LSVirtualNode alloc] initWithClass:UIView.class configuration:^(__weak UIView * object) {
+    LSVirtualNode *nodeB = [[LSVirtualNode alloc] initWithClass:UIView.class children:@[] configuration:^(__weak UIView * object) {
         object.backgroundColor = [UIColor redColor];
     }];
     
