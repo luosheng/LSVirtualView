@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LSVirtualNode.h"
+#import "LSVirtualPatch.h"
 
 @interface LSVirtualNodeDiffHelper : NSObject
+
++ (NSArray<LSVirtualPatch *> *)diff:(LSVirtualNode *)a withAnotherNode:(LSVirtualNode *)b;
+
++ (NSArray<LSVirtualPatch *> *)diffProperties:(LSVirtualNode *)a withAnotherNode:(LSVirtualNode *)b;
+
++ (NSArray<LSVirtualPatch *> *)diffChildren:(LSVirtualNode *)a withAnotherNode:(LSVirtualNode *)b;
 
 @end

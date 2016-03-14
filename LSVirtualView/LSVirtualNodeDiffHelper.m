@@ -10,4 +10,16 @@
 
 @implementation LSVirtualNodeDiffHelper
 
++ (NSArray<LSVirtualPatch *> *)diff:(LSVirtualNode *)a withAnotherNode:(LSVirtualNode *)b {
+    return nil;
+}
+
++ (NSArray<LSVirtualPatch *> *)diffProperties:(LSVirtualNode *)a withAnotherNode:(LSVirtualNode *)b {
+    return nil;
+}
+
++ (NSArray<LSVirtualPatch *> *)diffChildren:(LSVirtualNode *)a withAnotherNode:(LSVirtualNode *)b {
+    return nil;
+}
+
 @end
