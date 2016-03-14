@@ -15,7 +15,7 @@
 
 @property (nonatomic, weak) id underlyingObject;
 
-@property (nonatomic, strong, readwrite) NSMutableArray *invocations;
+@property (nonatomic, strong) NSMutableArray *mutableInvocations;
 
 @property (nonatomic, strong) NSArray<LSVirtualNode *> *children;
 
@@ -46,7 +46,7 @@
     
     _underlyingObject = self.class._objectPool[className];
     _underlyingClass = class;
-    _invocations = [NSMutableArray array];
+    _mutableInvocations = [NSMutableArray array];
     _children = children;
     
     if (configuration != nil) {
@@ -80,6 +80,10 @@
     return [array copy];
 }
 
+- (NSArray *)invocations {
+    return [self.mutableInvocations copy];
+}
+
 #pragma mark - Method forwarding
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)sel {
@@ -87,7 +91,7 @@
 }
 
 - (void)forwardInvocation:(NSInvocation *)invocation {
-    [(NSMutableArray *)self.invocations addObject:invocation];
+    [self.mutableInvocations addObject:invocation];
 }
 
 @end
