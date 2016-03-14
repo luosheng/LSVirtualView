@@ -76,6 +76,30 @@
     XCTAssertEqual(patch.patch, node2);
 }
 
+- (void)testInvocations {
+    LSVirtualNode *node1 = [VNode(UIButton, button, @[]) {
+        [button setTitle:@"123" forState:UIControlStateNormal];
+    }];
+    
+    LSVirtualNode *node2 = [VNode(UIButton, button, @[]) {
+        [button setTitle:@"123" forState:UIControlStateNormal];
+    }];
+
+    NSInvocation *invocation1 = node1.invocations.firstObject;
+    NSInvocation *invocation2 = node2.invocations.firstObject;
+    
+    XCTAssertNotNil(invocation1);
+    XCTAssertNotNil(invocation2);
+
+    XCTAssertEqual(invocation1.selector, invocation2.selector);
+    NSLog(@"%@", NSStringFromSelector(invocation1.selector));
+    NSString *arg1;
+    NSString *arg2;
+    [invocation1 getArgument:&arg1 atIndex:2];
+    [invocation2 getArgument:&arg2 atIndex:2];
+    XCTAssertEqualObjects(arg1, arg2);
+}
+
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{
