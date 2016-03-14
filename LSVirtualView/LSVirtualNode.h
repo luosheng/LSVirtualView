@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define VNode(Type, Variable, Children) [LSVirtualNode alloc] initWithClass:Type.class children:Children configuration:^(Type * Variable)
+
 typedef void (^LSVirtualNodeConfiguration)(__weak id object);
 
 @interface LSVirtualNode : NSProxy

@@ -27,19 +27,19 @@
 }
 
 - (void)testVirtualNodeShouldBeBoundToUIView {
-    LSVirtualNode *node1 = [[LSVirtualNode alloc] initWithClass:UIButton.class children:@[] configuration:nil];
+    LSVirtualNode *node1 = [VNode(UIButton, _, @[]) {}];
     XCTAssertNotNil(node1);
     
-    LSVirtualNode *node2 = [[LSVirtualNode alloc] initWithClass:NSString.class children:@[] configuration:nil];
+    LSVirtualNode *node2 = [VNode(NSString, _, @[]) {}];
     XCTAssertNil(node2);
 }
 
 - (void)testCreation {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
-    LSVirtualNode *node = [[LSVirtualNode alloc] initWithClass:UIButton.class children:@[] configuration:^(UIButton * object) {
-        [object setTitle:@"123" forState:UIControlStateNormal];
-        object.tintColor = [UIColor redColor];
+    LSVirtualNode *node = [VNode(UIButton, button, @[]) {
+        [button setTitle:@"123" forState:UIControlStateNormal];
+        button.tintColor = [UIColor redColor];
     }];
     
     UIButton *button = [node create];
@@ -48,32 +48,32 @@
 }
 
 - (void)testDiff {
-    LSVirtualNode *nodeA = [[LSVirtualNode alloc] initWithClass:UIButton.class children:@[] configuration:^(__weak UIButton * object) {
-        [object setTitle:@"123" forState:UIControlStateNormal];
+    LSVirtualNode *node1 = [VNode(UIButton, button, @[]) {
+        [button setTitle:@"123" forState:UIControlStateNormal];
     }];
-    LSVirtualNode *nodeB = [[LSVirtualNode alloc] initWithClass:UIButton.class children:@[] configuration:^(__weak UIButton * object) {
-        [object setTitle:@"123" forState:UIControlStateNormal];
+    LSVirtualNode *node2 = [VNode(UIButton, button, @[]) {
+        [button setTitle:@"123" forState:UIControlStateNormal];
     }];
     
-    NSArray *diffs = [nodeA diff:nodeB];
+    NSArray *diffs = [node1 diff:node2];
     XCTAssertEqual(diffs.count, 0);
 }
 
 - (void)testTwoDifferentNodes {
-    LSVirtualNode *nodeA = [[LSVirtualNode alloc] initWithClass:UIButton.class children:@[] configuration:^(__weak UIButton * object) {
-        [object setTitle:@"123" forState:UIControlStateNormal];
+    LSVirtualNode *node1 = [VNode(UIButton, button, @[]) {
+        [button setTitle:@"123" forState:UIControlStateNormal];
     }];
-    LSVirtualNode *nodeB = [[LSVirtualNode alloc] initWithClass:UIView.class children:@[] configuration:^(__weak UIView * object) {
-        object.backgroundColor = [UIColor redColor];
+    LSVirtualNode *node2 = [VNode(UIView, view, @[]) {
+        view.backgroundColor = [UIColor redColor];
     }];
     
-    NSArray *diffs = [nodeA diff:nodeB];
+    NSArray *diffs = [node1 diff:node2];
     XCTAssertEqual(diffs.count, 1);
     
     LSVirtualPatch *patch = diffs.firstObject;
     XCTAssertEqual(patch.type, LSVirtualPatchTypeNode);
-    XCTAssertEqual(patch.node, nodeA);
-    XCTAssertEqual(patch.patch, nodeB);
+    XCTAssertEqual(patch.node, node1);
+    XCTAssertEqual(patch.patch, node2);
 }
 
 - (void)testPerformanceExample {
