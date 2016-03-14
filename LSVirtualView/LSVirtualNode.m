@@ -37,7 +37,11 @@
                 configuration:(LSVirtualNodeConfiguration)configuration {
     NSString *className = NSStringFromClass(class);
     if (self.class._objectPool[className] == nil) {
-        self.class._objectPool[className] = [[class alloc] init];
+        id object = [[class alloc] init];
+        if (![object isKindOfClass:[UIView class]]) {
+            return nil;
+        }
+        self.class._objectPool[className] = object;
     }
     
     _underlyingObject = self.class._objectPool[className];
@@ -45,7 +49,9 @@
     _invocations = [NSMutableArray array];
     _children = children;
     
-    configuration(self);
+    if (configuration != nil) {
+        configuration(self);
+    }
     
     return self;
 }

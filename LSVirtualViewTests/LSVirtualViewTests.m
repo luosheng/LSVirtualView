@@ -26,6 +26,14 @@
     [super tearDown];
 }
 
+- (void)testVirtualNodeShouldBeBoundToUIView {
+    LSVirtualNode *node1 = [[LSVirtualNode alloc] initWithClass:UIButton.class children:@[] configuration:nil];
+    XCTAssertNotNil(node1);
+    
+    LSVirtualNode *node2 = [[LSVirtualNode alloc] initWithClass:NSString.class children:@[] configuration:nil];
+    XCTAssertNil(node2);
+}
+
 - (void)testCreation {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
